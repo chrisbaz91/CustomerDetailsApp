@@ -1,0 +1,53 @@
+﻿@using CustomerDetailsApp.ViewModels
+@model CustomerDetailsApp.ViewModels.FieldsModel
+<div class="card">
+
+    <div class="card-header">
+        <h4>Customer</h4>
+    </div>
+
+    <div class="card-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" type="text" maxlength="50" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-1">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" type="number" />
+            </div>
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label asp-for="Postcode" class="control-label"></label>
+                <input asp-for="Postcode" class="form-control" />
+            </div>
+            <span asp-validation-for="Postcode" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-1">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" type="number" />
+            </div>
+            <span asp-validation-for="Height" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+        @if (Model is EditModel)
+        {
+            <input id="DeleteButton" type="button" value="Delete" class="btn btn-danger" />
+        }
+        @{
+            var disabled = Model is CreateModel;
+        }
+        <input id="SubmitButton" type="submit" value="Save" class="btn btn-success @(disabled ? "disabled" : "")" />
+    </div>
+
+</div>

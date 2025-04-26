@@ -1,0 +1,56 @@
+﻿@model CustomerDetailsApp.ViewModels.DetailsModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <div class="row">
+		<div class="col-md-6">
+			<strong>
+                <label class="form-label" asp-for="Name"></label>
+            </strong>
+            <span>@Model.Name</span>
+        </div>
+    </div>
+    <div class="row">
+		<div class="col-md-6">
+			<strong>
+                <label class="form-label" asp-for="Age"></label>
+            </strong>
+            <span>@Model.Age</span>
+        </div>
+    </div>
+    <div class="row">
+		<div class="col-md-6">
+			<strong>
+                <label class="form-label" asp-for="Postcode"></label>
+            </strong>
+            <span>@Model.Postcode</span>
+        </div>
+    </div>
+    <div class="row">
+		<div class="col-md-6">
+			<strong>
+                <label class="form-label" asp-for="Height"></label>
+            </strong>
+            <span>@Model.Height</span>
+        </div>
+    </div>
+    @* <div class="row">
+		<div class="col-md-6">
+			<strong>
+                <label class="form-label" asp-for="Date"></label>
+            </strong>
+            <span>@Model.Date</span>
+        </div>
+    </div> *@
+</div>
+<p>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back</a>
+    <a href="@Url.Action("Edit", "Customers", new { id = Model.Id })" class="btn btn-primary">Edit</a>
+</p>

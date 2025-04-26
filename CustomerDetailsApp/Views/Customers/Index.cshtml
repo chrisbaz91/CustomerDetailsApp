@@ -1,0 +1,50 @@
+﻿@model CustomerDetailsApp.ViewModels.IndexModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customers</h2>
+<br />
+<a href="@Url.Action("Create", "Customers")" class="btn btn-primary">Create New</a>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            <label asp-for="@Model.List.FirstOrDefault().Id"></label>
+        </th>
+        <th>
+            <label asp-for="@Model.List.FirstOrDefault().Name"></label>
+        </th>
+        <th>
+            <label asp-for="@Model.List.FirstOrDefault().Postcode"></label>
+        </th>
+        <th>
+            <label asp-for="@Model.List.FirstOrDefault().DateRegistered"></label>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.List) {
+    <tr>
+        <td>
+            @item.Id
+        </td>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.Postcode
+        </td>
+        <td>
+            @item.DateRegistered
+        </td>
+        <td>
+            <a href="@Url.Action("Details", "Customers", new { id = item.Id })" class="btn btn-primary">Details</a>
+            <a href="@Url.Action("Edit", "Customers", new { id = item.Id })" class="btn btn-primary">Edit</a>
+        </td>
+    </tr>
+}
+
+</table>
