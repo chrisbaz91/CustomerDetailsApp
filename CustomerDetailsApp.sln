@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerDetailsApp", "CustomerDetailsApp\CustomerDetailsApp.csproj", "{42AB7AEF-4AFC-4114-BEFC-AE918BD9723F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerDetailsAppIntegrationTests", "CustomerDetailsAppIntegrationTests\CustomerDetailsAppIntegrationTests.csproj", "{97B95EA5-0322-4F15-80B9-891C5169A979}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerDetailsAppUnitTests", "CustomerDetailsAppUnitTests\CustomerDetailsAppUnitTests.csproj", "{4732BCC4-0586-C334-12C6-3029B5EF3166}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{97B95EA5-0322-4F15-80B9-891C5169A979}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97B95EA5-0322-4F15-80B9-891C5169A979}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97B95EA5-0322-4F15-80B9-891C5169A979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4732BCC4-0586-C334-12C6-3029B5EF3166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4732BCC4-0586-C334-12C6-3029B5EF3166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4732BCC4-0586-C334-12C6-3029B5EF3166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4732BCC4-0586-C334-12C6-3029B5EF3166}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
