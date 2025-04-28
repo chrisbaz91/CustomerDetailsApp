@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace CustomerDetailsApp.Validators
 {
-    public class CreateModelValidator : AbstractValidator<CreateModel>/* : FieldsModelValidator*/
+    public class CreateModelValidator : AbstractValidator<CreateModel>
     {
         public CreateModelValidator()
         {

@@ -22,6 +22,9 @@ namespace CustomerDetailsApp.Validators
                 .WithMessage("Please enter your height.")
                 .InclusiveBetween(0, 2.50)
                 .WithMessage("Please enter a height between 0 and 2.50 metres.");
+            RuleFor(x => x.Height.ToString())
+                .Matches("^[0-2](\\.\\d{0,2})?$")
+                .WithMessage("Please enter a height with no more than two decimal places.");
             RuleFor(x => x.Postcode)
                 .NotEmpty()
                 .WithMessage("Please enter a postcode.")
