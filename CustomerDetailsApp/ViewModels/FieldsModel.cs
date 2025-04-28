@@ -19,6 +19,7 @@ namespace CustomerDetailsApp.ViewModels
 
         [Required]
         [Range(0, 2.5)]
+        [RegularExpression("^[0-2](\\.\\d{0,2})?$", ErrorMessage = "Please enter a height with no more than two decimal places.")]
         [Display(Name = "Height (metres)")]
         public double Height { get; set; }
     }
