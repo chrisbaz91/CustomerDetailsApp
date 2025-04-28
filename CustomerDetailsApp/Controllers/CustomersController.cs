@@ -1,11 +1,13 @@
 ﻿using CustomerDetailsApp.DataAccess;
 using CustomerDetailsApp.Handlers;
 using CustomerDetailsApp.ViewModels;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerDetailsApp.Controllers
 {
-    public class CustomersController(ICustomerRepository repo) : Controller
+    public class CustomersController(ICustomerRepository repo, IValidator<FieldsModel> validator) : Controller
     {
 
         // GET: Customers
@@ -44,12 +46,17 @@ namespace CustomerDetailsApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateModel model)
         {
-            if (ModelState.IsValid)
+            FluentValidation.Results.ValidationResult validationResult = await validator.ValidateAsync(model);
+
+            if (ModelState.IsValid && validationResult.IsValid)
             {
                 var handler = new CreateModelHandler(repo);
                 await handler.Handle(model);
                 return RedirectToAction(nameof(Index));
             }
+
+            validationResult.AddToModelState(this.ModelState);
+
             return View(model);
         }
 
@@ -74,7 +81,9 @@ namespace CustomerDetailsApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditModel model)
         {
-            if (ModelState.IsValid)
+            FluentValidation.Results.ValidationResult validationResult = await validator.ValidateAsync(model);
+
+            if (ModelState.IsValid && validationResult.IsValid)
             {
                 var handler = new EditModelHandler(repo);
                 var result = await handler.Handle(model);
@@ -83,6 +92,9 @@ namespace CustomerDetailsApp.Controllers
                     return RedirectToAction(nameof(Index));
                 }
             }
+
+            validationResult.AddToModelState(this.ModelState);
+
             return View(model);
         }
 

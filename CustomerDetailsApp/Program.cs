@@ -6,9 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<CustomerContext>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-//builder.Services.AddValidatorsFromAssemblyContaining<FieldsModelValidator>();
-//builder.Services.AddScoped<IValidator<CreateModel>, CreateModelValidator>();
-//builder.Services.AddScoped<IValidator<EditModel>, EditModelValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<FieldsModelValidator>();
 
 // Seed test data into in-memory database
 await SeedData.SetInitialData();
