@@ -42,13 +42,47 @@ function deleteButtonOnClick() {
 }
 
 function enableSubmitButton(inputs) {
-    let disabled = "";
     const submitButton = document.getElementById("SubmitButton");
+    let value;
+    let disabled = false;
 
     if (submitButton) {
         for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value === "") {
-                disabled = "disabled";
+
+            value = inputs[i].value;
+
+            if (value === "") {
+                disabled = true;
+                break;
+            }
+
+            switch (inputs[i].id) {
+                case "Name":
+                    if (value.length > 50) {
+                        disabled = true;
+                    }
+                    break;
+                case "Age":
+                    if (value < 0 || value > 110) {
+                        disabled = true;
+                    }
+                    break;
+                case "Height":
+                    const heightRegex = /^[0-2](\.\d{0,2})?$/;
+                    if (!heightRegex.test(value) || value < 0 || value > 2.5) {
+                        disabled = true;
+                    }
+                    break;
+                case "Postcode":
+                    const postcodeRegex = /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/;
+                    if (!postcodeRegex.test(value)) {
+                        disabled = true;
+                    }
+                    break;
+
+            }
+
+            if (disabled) {
                 break;
             }
         }
